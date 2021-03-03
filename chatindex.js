@@ -1,6 +1,7 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { createRequire } from 'module';
+const PORT = process.env.MONG
 const require = createRequire(import.meta.url);
 const app = require("express")();
 dotenv.config();
@@ -21,6 +22,7 @@ const corsOptions = {
     }
   }
 }
+const socket = 'localhost://3000';
 app.use(cors());
 io.on("connect", (socket) => {
   console.log("user connected", socket.id);
@@ -35,6 +37,6 @@ app.all('*', function(req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
 });
-server.listen(process.env.SOCKET, function () {
-  console.log(`listening on port: ` + process.env.SOCKET);
+server.listen(3001, function () {
+  console.log(`SOCKET RUNNING`);
 });
