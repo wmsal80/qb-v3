@@ -4,7 +4,7 @@ import { createRequire } from 'module';
 const require = createRequire(import.meta.url);
 const app = require("express")();
 dotenv.config();
-const server = require("http").createServer(app);
+const server = require("https").createServer(app);
 const io = require("socket.io")(server, {
     cors: {
       origin: process.env.BASE_URL,
@@ -22,18 +22,19 @@ const corsOptions = {
   }
 }
 app.use(cors());
-io.on("connect", (socket) => {
-  console.log("user connected", socket.id);
-  socket.on("chat-msg", function (data) {
-    io.emit("chat-msg", data);
-  });
-});
+
 app.all('*', function(req, res, next) {
   var origin = req.get('origin'); 
   res.header('Access-Control-Allow-Origin', origin);
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
+});
+io.on("connect", (socket) => {
+  console.log("user connected", socket.id);
+  socket.on("chat-msg", function (data) {
+    io.emit("chat-msg", data);
+  });
 });
 const PORT = process.env.SOCKET || 3001;
 server.listen(PORT, function () {
