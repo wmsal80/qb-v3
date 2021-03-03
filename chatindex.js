@@ -8,7 +8,7 @@ dotenv.config();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
     cors: {
-      origin: "https://qb-chat-v3.herokuapp.com",
+      origin: "https://qb-chat-v3.herokuapp.com/",
       methods: ["GET", "POST"]
     }
   });
