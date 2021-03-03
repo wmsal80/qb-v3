@@ -1,14 +1,14 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { createRequire } from 'module';
-const PORT = process.env.MONG
+const PORT = process.env.SOCKET
 const require = createRequire(import.meta.url);
 const app = require("express")();
 dotenv.config();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server, {
     cors: {
-      origin: "https://qb-chat-v3.herokuapp.com/",
+      origin: process.env.BASE_URL,
       methods: ["GET", "POST"]
     }
   });
