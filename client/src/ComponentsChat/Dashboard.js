@@ -1,17 +1,17 @@
-import React, { useState } from "./node_modules/react";
-import { makeStyles } from "./node_modules/@material-ui/core/styles";
-import List from "./node_modules/@material-ui/core/List";
-import ListItem from "./node_modules/@material-ui/core/ListItem";
-import ListItemIcon from "./node_modules/@material-ui/core/ListItemIcon";
-import ListItemText from "./node_modules/@material-ui/core/ListItemText";
-import Card from "./node_modules/@material-ui/core/Card";
-import CardContent from "./node_modules/@material-ui/core/CardContent";
-import Typography from "./node_modules/@material-ui/core/Typography";
-import Avatar from "./node_modules/@material-ui/core/Avatar";
-import Button from "./node_modules/@material-ui/core/Button";
-import TextField from "./node_modules/@material-ui/core/TextField";
+import React, { useState } from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import List from "@material-ui/core/List";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+import Typography from "@material-ui/core/Typography";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import TextField from "@material-ui/core/TextField";
 import { CTX } from "./Store";
-import { grey } from "./node_modules/@material-ui/core/colors";
+import { grey } from "@material-ui/core/colors";
 
 
 const useStyles = makeStyles((theme) => ({
