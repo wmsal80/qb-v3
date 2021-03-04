@@ -9,7 +9,7 @@ import userRoutes from './routes/users.js';
 
 const app = express();
 dotenv.config();
-const whitelist = ['https://qb-chat-v3.herokuapp.com', 'http://localhost:3000']
+const whitelist = ['https://qb-v3-john.herokuapp.com', 'http://localhost:3000']
 const corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
