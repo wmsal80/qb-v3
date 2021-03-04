@@ -41,7 +41,7 @@ app.use('/user', userRoutes);
 app.get('/', (req,res) =>{
     // res.setHeader('Access-Control-Allow-Origin', '*');
     // res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE'); // If needed
-    res.send('Hello to Quest Board API')
+    res.send('Hello to Quest Board API!')
 });
 
 const PORT = process.env.PORT || 5000;
