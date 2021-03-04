@@ -1,7 +1,7 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { createRequire } from 'module';
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const INDEX = '/index.html';
 const require = createRequire(import.meta.url);
 const app = require("express")();
