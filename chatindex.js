@@ -13,20 +13,19 @@ const io = require("socket.io")(server, {
       methods: ["GET", "POST"]
     }
   });
-  const whitelist = ['https://qb-v3-john.herokuapp.com', 'http://localhost:3000']
-  const corsOptions = {
-    origin: function (origin, callback) {
-      if (whitelist.indexOf(origin) !== -1) {
-        callback(null, true)
-      } else {
-        callback(new Error('Not allowed by CORS'))
-      }
+const whitelist = ['https://qb-v3-john.herokuapp.com', 'http://localhost:3000']
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
     }
   }
+}
 app.use(cors());
-
 app.all('*', function(req, res, next) {
-  var origin = req.get('origin'); 
+  var origin = req.get('origin');
   res.header('Access-Control-Allow-Origin', origin);
   res.header("Access-Control-Allow-Headers", "X-Requested-With");
   res.header('Access-Control-Allow-Headers', 'Content-Type');
