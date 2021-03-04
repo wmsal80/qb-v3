@@ -1,7 +1,8 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { createRequire } from 'module';
-const require = createRequire(import.meta.url);
+const PORT = process.env.PORT || 3000;
+const INDEX = '/index.html';
 const app = require("express")();
 dotenv.config();
 const server = require("https").createServer(app);
@@ -11,16 +12,16 @@ const io = require("socket.io")(server, {
       methods: ["GET", "POST"]
     }
   });
-const whitelist = ['https://qb-v3-john.herokuapp.com', 'http://localhost:3000']
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
+  const whitelist = ['https://qb-v3-john.herokuapp.com', 'http://localhost:3000']
+  const corsOptions = {
+    origin: function (origin, callback) {
+      if (whitelist.indexOf(origin) !== -1) {
+        callback(null, true)
+      } else {
+        callback(new Error('Not allowed by CORS'))
+      }
     }
   }
-}
 app.use(cors());
 
 app.all('*', function(req, res, next) {
@@ -36,7 +37,7 @@ io.on("connect", (socket) => {
     io.emit("chat-msg", data);
   });
 });
-const PORT = process.env.SOCKET || 3001;
-server.listen(PORT, function () {
+server.use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+.listen(PORT, function () {
   console.log(`SOCKET RUNNING... GO CATCH ${PORT}`);
 });
