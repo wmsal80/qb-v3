@@ -1,8 +1,6 @@
 import cors from 'cors';
 import dotenv from 'dotenv';
 import { createRequire } from 'module';
-const PORT = process.env.PORT || 3000;
-const INDEX = '/index.html';
 const require = createRequire(import.meta.url);
 const app = require("express")();
 dotenv.config();
@@ -37,7 +35,7 @@ io.on("connect", (socket) => {
     io.emit("chat-msg", data);
   });
 });
-server.use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-.listen(PORT, function () {
-  console.log(`SOCKET RUNNING... GO CATCH! ${PORT}`);
+const PORT = process.env.SOCKET || 3001;
+server.listen(PORT, function () {
+  console.log(`SOCKET RUNNING... GO CATCH ${PORT}`);
 });
