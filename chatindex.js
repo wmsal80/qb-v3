@@ -39,5 +39,5 @@ io.on("connect", (socket) => {
 });
 server.use((req, res) => res.sendFile(INDEX, { root: __dirname }))
 .listen(PORT, function () {
-  console.log(`SOCKET RUNNING... GO CATCH ${PORT}`);
+  console.log(`SOCKET RUNNING... GO CATCH! ${PORT}`);
 });
